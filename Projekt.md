@@ -1,6 +1,22 @@
-### Aplikacje internetowe: projekt
+### Strona główna
+- [ ] navigation bar
+- [ ] footer
+- [ ] main div
+- [ ] add some divs
+- [ ] adjusting to other devices XD
 
-1. Przygotować rysunek strony na karteczce (Excalidraw) 
-2. Przyjść na konsultacje do Mikołaja
+
+
+### Baza danych
+- [ ] zainstalować na serwerze
+- [ ] pobrać bazę (schemat)
+- [ ] łączenie się ze strony
+
+
+
+### Zabezpieczenia
+- [ ] Captcha
+- [ ] Logowanie
+- [ ] SSL/TLS
 
 

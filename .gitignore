@@ -4,7 +4,7 @@
 # OR only to exclude workspace cache
 .obsidian/workspace/*
 
-# Exclude plugins
+# Exclude pluginsgit
 .obsidian/plugins/*
 
 # Exclude consultant specific files "personal"
