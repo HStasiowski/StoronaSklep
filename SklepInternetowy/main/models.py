@@ -5,4 +5,9 @@ class Products(models.Model):
     valid_until = models.DateField()
     stock = models.IntegerField()
 
+    # def __str__(self):
+    #     return self.question_text
 
+
+# class Clients(models.Model):
+    # email = models.
