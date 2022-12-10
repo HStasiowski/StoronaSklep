@@ -1,11 +1,22 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 
 
 def index_view(request):
     return render(request, "main/index.html")
+
+
+def about_view(request):
+    return render(request, "main/about.html")
+
+
+def register_view(request):
+    return render(request, "main/user_register.html")
+
+
+def register_success_view(request):
+    return render(request, "main/user_register_success.html")
 
 
 def render_user_view(request,
@@ -67,8 +78,7 @@ def change_password(request):
             user_object = User.objects.get(username=request.user.username)
             user_object.set_password(raw_password=new_password)
             user_object.save()
-            return HttpResponse("Password has been changed successfully!. "
-                                "Login again! http://127.0.0.1:8000/main/user")
+            return render(request, "main/user_change_password_success.html")
     else:
         return redirect(reverse("main:login") + f"?next={reverse('main:user')}")
 
@@ -100,4 +110,4 @@ def login_proceed(request):
 
 def logout_proceed(request):
     logout(request)
-    return HttpResponse("Successfully logged out!")
+    return render(request, "main/user_logout.html")
