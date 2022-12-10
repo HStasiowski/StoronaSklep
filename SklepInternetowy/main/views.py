@@ -7,3 +7,7 @@ def index(request):
 
 def user(request):
     return render(request, 'main/user_profile.html')
+
+
+def login(request):
+    return render(request, 'main/user_login.html')
