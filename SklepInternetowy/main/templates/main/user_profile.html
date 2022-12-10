@@ -150,7 +150,7 @@
     <input type="submit" value="Submit">
 </form>
 </div>
-<form>  <input type="submit" value="Logout"  href="{% url 'main:logout' %}"></form>
+<form action="{% url 'main:logout' %}" >  <input type="submit" value="Logout" ></form>
 
 <div id="footer">
   <p>Copyright 2022 <br>
