@@ -36,6 +36,7 @@
             padding: 20px;
             border: 1px solid #333;
             background-color: #f8f9fa;
+            text-align: center;
         }
 
         label {
@@ -106,10 +107,10 @@
                 </li>
                 <li class="nav-item active">
                     <a href="#" class="nav-link active">
-                        O nas
+                        O Nas
                     </a>
                 </li>
-                </li>
+          
                 <li class="nav-item active">
                     <a href="#" class="nav-link disabled">
                         ProjectAI
@@ -123,17 +124,17 @@
     <div id="back">
         <div class="header">
             <h2 style="color:rgb(32, 30, 23);font-size:200%">
-                Logowanie
+                <!--tu ogolnie byl tekst logowanie ale trzeba jakos inaczej obnizyc-->
             </h2>
         </div>
 
 
         <form action="{% url 'main:login_proceed' %}" method="post">
             {% csrf_token %}
-            <label for="username"><a href="{% url 'main:user' %}">Pomyślnie wylogowano!</a></label><br>
+            <label for="username">Pomyślnie wylogowano!</label><br>
 
-                ><br><br>
-            <label for="password"  >Zaloguj się ponownie</label><br>
+                
+            <label for="password" ><a href="{% url 'main:user' %}">Zaloguj ponownie!</a></label><br>
 
 
 
