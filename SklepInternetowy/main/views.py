@@ -8,6 +8,19 @@ def index_view(request):
     return render(request, "main/index.html")
 
 
+def cart_view(request):
+    return render(request, "main/cart.html")
+
+
+def products_view(request):
+    return render(request, "main/products.html")
+
+
+def for_testing_view(request):
+    return render(request, "main/for_testing.html")
+
+
+
 def about_view(request):
     return render(request, "main/about.html")
 
