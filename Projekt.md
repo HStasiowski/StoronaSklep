@@ -6,7 +6,7 @@
 	- [ ] (opcjonalnie) Dodawanie towarów do koszyka
 - [ ] Strona użytkownika:
 	- [ ] **Rejestracja**
-	- [ ] **Logowanie**
+	- [ ] **Logowanie / wylogowanie**
 	- [ ] **Przeglad danych osobowych**
 	- [ ] **Edycja danych osobowych**
 	- [ ] (opcjonalnie) Zamówienia

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
+<head>
     <title>Login Page</title>
-  </head>
-  <body>
-    <h1>Login</h1>
-    <form>
-      <label for="username">Username:</label><br>
-      <input type="text" id="username" name="username"><br>
-      <label for="password">Password:</label><br>
-      <input type="password" id="password" name="password"><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+</head>
+<body>
+<h1>Login</h1>
+{% if unsuccessful_login %}<p style="color: red"><strong>{{ unsuccessful_login }}</strong></p>{% endif %}
+<form action="{% url 'main:login_proceed' %}" method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" value="{% if predefined_username %}{{ predefined_username }}{% endif %}"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
 </html>
