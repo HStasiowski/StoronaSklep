@@ -32,7 +32,3 @@
 - [ ] SSL/TLS
 
 
-email
-fist last name
-username
-haslox2
