@@ -11,6 +11,7 @@
 	- [ ] **Edycja danych osobowych**
 	- [ ] (opcjonalnie) Zamówienia
 	- [ ] (opcjonalnie) Koszyk
+- [ ] **HTML Templates for errors (403, 404)**
 - [ ] (opcjonalnie) Automatyczne generowanie strony HTML
 
 ### Strona główna

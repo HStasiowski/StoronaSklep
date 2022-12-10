@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
+<head>
     <title>User Account</title>
-  </head>
-  <body>
-    <h1>User Account</h1>
+</head>
+<body>
+<h1>User Account</h1>
 
-    <h2>Personal Information</h2>
-    <p>
-      First Name: <span id="first-name">Max</span><br>
-      Last Name: <span id="last-name"></span><br>
-      Email: <span id="email"></span>
-    </p>
+<h2>Personal Information</h2>
+<p>
+    First Name: <span id="first-name">{% if first_name %}{{ first_name }}{% endif %}</span><br>
+    Last Name: <span id="last-name">{% if last_name %}{{ last_name }}{% endif %}</span><br>
+    Email: <span id="email">{% if user_email %}{{ user_email }}{% endif %}</span>
+</p>
 
-    <h2>Change Password</h2>
-    <form>
-      <label for="current-password">Current Password:</label><br>
-      <input type="password" id="current-password" name="current-password"><br>
-      <label for="new-password">New Password:</label><br>
-      <input type="password" id="new-password" name="new-password"><br>
-      <label for="confirm-new-password">Confirm New Password:</label><br>
-      <input type="password" id="confirm-new-password" name="confirm-new-password"><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+<h2>Change Password</h2>
+<form>
+    <label for="current-password">Current Password:</label><br>
+    <input type="password" id="current-password" name="current-password"><br>
+    <label for="new-password">New Password:</label><br>
+    <input type="password" id="new-password" name="new-password"><br>
+    <label for="confirm-new-password">Confirm New Password:</label><br>
+    <input type="password" id="confirm-new-password" name="confirm-new-password"><br><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
 </html>

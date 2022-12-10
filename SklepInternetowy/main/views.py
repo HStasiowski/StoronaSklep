@@ -1,5 +1,6 @@
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 
 def index_view(request):
@@ -7,11 +8,21 @@ def index_view(request):
 
 
 def user_view(request):
-    return render(request, 'main/user_profile.html')
+    if request.user.is_authenticated:
+        return render(request, 'main/user_profile.html', {
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'user_email': request.user.email,
+        })
+    else:
+        return redirect(reverse('main:login') + f'?next={reverse("main:user")}')
 
 
 def login_view(request):
-    return render(request, 'main/user_login.html')
+    if request.user.is_authenticated:
+        return redirect('main:user')
+    else:
+        return render(request, 'main/user_login.html')
 
 
 def login_proceed(request):
@@ -24,9 +35,14 @@ def login_proceed(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('main:user')
+            return redirect(request.GET.get('next', default=reverse('main:user')))
         else:
             return render(request, 'main/user_login.html', {
                 'unsuccessful_login': 'Bad username or password.',
                 'predefined_username': username
             })
+
+
+def logout_proceed(request):
+    logout(request)
+    return HttpResponse("Successfully logged out!")
