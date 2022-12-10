@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.password_validation import validate_password, ValidationError
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, reverse
 
@@ -50,27 +51,24 @@ def change_password(request):
         except KeyError:
             return redirect(reverse("main:user"))
         else:
+            problems = []
             user = authenticate(request, username=request.user.username, password=current_password)
             if user is None:
-                return render_user_view(
-                    request,
-                    unsuccessful_description="Current password is incorrect.",
-                    current_password=current_password,
-                    new_password=new_password,
-                    confirm_new_password=confirm_new_password
-                )
+                problems.append("Current password is incorrect!")
+            try:
+                validate_password(password=new_password, user=request.user.username)
+            except ValidationError as validation_error:
+                problems.extend([error.message for error in validation_error.error_list])
             if new_password == "":
-                return render_user_view(
-                    request,
-                    unsuccessful_description="Password cannot be empty.",
-                    current_password=current_password,
-                    new_password=new_password,
-                    confirm_new_password=confirm_new_password
-                )
+                problems.append("New password cannot be empty.")
             if new_password != confirm_new_password:
+                problems.append("Your passwords didn't match.")
+            if new_password == current_password:
+                problems.append("New password cannot be the same as old password.")
+            if problems:
                 return render_user_view(
                     request,
-                    unsuccessful_description="Your passwords didn't match.",
+                    unsuccessful_description=problems,
                     current_password=current_password,
                     new_password=new_password,
                     confirm_new_password=confirm_new_password

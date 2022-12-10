@@ -15,7 +15,9 @@
 
 <h2>Change Password</h2>
 {% if unsuccessful_description %}
-    <p style="color: red"><strong>{{ unsuccessful_description }}</strong></p>
+    {% for description in unsuccessful_description %}
+        <p style="color: red"><strong>{{ description }}</strong></p>
+    {% endfor %}
 {% endif %}
 <form action="{% url 'main:change_password' %}" method="post">
     {% csrf_token %}
