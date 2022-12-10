@@ -104,7 +104,7 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a href="#" class="nav-link active">
+                <a href="{% url 'main:about' %}" class="nav-link active">
                 O nas
               </a>
             </li>
@@ -150,7 +150,7 @@
     <input type="submit" value="Submit">
 </form>
 </div>
-
+<form>  <input type="submit" value="Logout"  href="{% url 'main:logout' %}"></form>
 
 <div id="footer">
   <p>Copyright 2022 <br>
