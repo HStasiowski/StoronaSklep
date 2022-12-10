@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.password_validation import validate_password, ValidationError
 from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password, ValidationError
 from django.shortcuts import render, redirect, reverse
 
 
@@ -109,3 +109,19 @@ def login_proceed(request):
 def logout_proceed(request):
     logout(request)
     return render(request, "main/user_logout.html")
+
+
+def handler404_view(request, exception):
+    return render(request, "main/errors/404.html", {}, status=404)
+
+
+def handler500_view(request, exception=None):
+    return render(request, "main/errors/500.html", {}, status=500)
+
+
+def handler403_view(request, exception=None):
+    return render(request, "main/errors/403.html", {}, status=403)
+
+
+def handler400_view(request, exception=None):
+    return render(request, "main/errors/400.html", {}, status=400)
