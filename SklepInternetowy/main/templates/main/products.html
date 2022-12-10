@@ -25,7 +25,7 @@
       margin-top: 50px;
       text-align: center;
       border: 1px solid #333;
-
+      margin-bottom: 25px;
     }
 
     .bigdick {
@@ -37,16 +37,31 @@
     .columnA,
     .columnB,
     .columnC {
+      
       margin: 0 auto;
-
+      border: 1px solid #333;
       width: 31%;
       padding: 15px;
       text-align: justify;
+      
+      
+    }
+    .columnD,
+    .columnE,
+    .columnF {
+      
+    
     }
 
     h2 {
       color: green;
       text-align: center;
+    }
+
+    h3 {
+      color: red;
+      text-align: center;
+      
     }
 
     /* Media query to set website layout
@@ -90,15 +105,10 @@
 
     }
 
-    .photo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
     img {
       max-width: 100%;
       max-height: 100%;
+      
     }
   </style>
 </head>
@@ -156,7 +166,16 @@
 
 
         <img src="{% static 'main/media/6.jpg' %}">
-
+        <div class="columnD">
+          <h2>Termometrocoś</h2>
+  
+  
+  
+          <h3>cena</h3>
+  
+  
+  
+        </div>
 
 
       </div>
@@ -167,6 +186,17 @@
 
 
         <img src="{% static 'main/media/7.jpg' %}">
+        <div class="columnE">
+          <h2>Kaloryfer przenośny</h2>
+  
+  
+  
+          <h3>cena</h3>
+  
+  
+  
+        </div>
+  
 
 
 
@@ -177,51 +207,91 @@
 
 
 
-        <img src="{% static 'main/media/8.jpg' %}">
+        <img onclick="location.href='{% url 'main:index' %}'" src="{% static 'main/media/8.jpg' %}">
+      
+      <div class="columnF">
+        <h2>Klimatyzacja</h2>
+
+
+
+        <h3>cena</h3>
+
+
+
+      </div>
 
 
 
       </div>
     </div>
-    <div class="photo-container">
-      <img src="{% static 'main/media/rekama.jpg' %}">
+
+    
+<br>
+<div class="row">
+
+  <div class="columnA">
+    <h2>Column A</h2>
+
+
+    <img src="{% static 'main/media/1.jpg' %}">
+    <div class="columnD">
+      <h2>Termometrocoś</h2>
+
+
+
+      <h3>cena</h3>
+
+
+
     </div>
-    <div class="row">
-
-      <div class="columnA">
-        <h2>Column A</h2>
 
 
-
-        <img src="{% static 'main/media/1.jpg' %}">
-
-
-
-      </div>
-
-      <div class="columnB">
-        <h2>Column B</h2>
-
-
-
-        <img src="{% static 'main/media/2.jpg' %}">
-
-
-
-      </div>
-
-      <div class="columnC">
-        <h2>Column C</h2>
-
-
-
-        <img src="{% static 'main/media/3.jpg' %}">
-
-
-
-      </div>
-    </div>
   </div>
+
+  <div class="columnB">
+    <h2>Column B</h2>
+
+
+
+    <img src="{% static 'main/media/2.jpg' %}">
+    <div class="columnE">
+      <h2>Kaloryfer przenośny</h2>
+
+
+
+      <h3>cena</h3>
+
+
+
+    </div>
+
+
+
+
+  </div>
+
+  <div class="columnC">
+    <h2>Column C</h2>
+
+
+
+    <img onclick="location.href='{% url 'main:index' %}'" src="{% static 'main/media/3.jpg' %}">
+  
+  <div class="columnF">
+    <h2>Klimatyzacja</h2>
+
+
+
+    <h3>cena</h3>
+
+
+
+  </div>
+
+
+
+  </div>
+</div>
 
 
   <div id="footer">
