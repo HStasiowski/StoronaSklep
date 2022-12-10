@@ -1,11 +1,10 @@
 from django.db import models
-import datetime as dt
-
+from django.utils import timezone
 
 class Products(models.Model):
     product_name = models.TextField()
     stock = models.IntegerField()
-    last_updated = models.DateTimeField(default=dt.datetime.now())
+    last_updated = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.product_name

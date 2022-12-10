@@ -14,13 +14,20 @@
 </p>
 
 <h2>Change Password</h2>
-<form>
+{% if unsuccessful_description %}
+    <p style="color: red"><strong>{{ unsuccessful_description }}</strong></p>
+{% endif %}
+<form action="{% url 'main:change_password' %}" method="post">
+    {% csrf_token %}
     <label for="current-password">Current Password:</label><br>
-    <input type="password" id="current-password" name="current-password"><br>
+    <input type="password" id="current-password" name="current-password"
+           value="{% if predefined_current_password %}{{ predefined_current_password }}{% endif %}"><br>
     <label for="new-password">New Password:</label><br>
-    <input type="password" id="new-password" name="new-password"><br>
+    <input type="password" id="new-password" name="new-password"
+           value="{% if predefined_new_password %}{{ predefined_new_password }}{% endif %}"><br>
     <label for="confirm-new-password">Confirm New Password:</label><br>
-    <input type="password" id="confirm-new-password" name="confirm-new-password"><br><br>
+    <input type="password" id="confirm-new-password" name="confirm-new-password"
+           value="{% if predefined_confirm_new_password %}{{ predefined_confirm_new_password }}{% endif %}"><br><br>
     <input type="submit" value="Submit">
 </form>
 </body>
