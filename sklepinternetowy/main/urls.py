@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
@@ -16,5 +18,5 @@ urlpatterns = [
     path('logout/', views.logout_proceed, name='logout'),
     path('for_testing/', views.for_testing_view, name='for_testing'),
     path('products/', views.products_view, name='products'),
-    path('products/produkt_po_wcisnieciu/',views.produkt_po_wcisnieciu_view, name='produkt_po_wcisnieciu')
-]
+    path('products/produkt_po_wcisnieciu/',views.produkt_po_wcisnieciu_view, name='produkt_po_wcisnieciu'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
