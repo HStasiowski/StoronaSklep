@@ -25,7 +25,7 @@
       margin-top: 50px;
       text-align: center;
       border: 1px solid #333;
-      margin-bottom: 25px;
+
     }
 
     .bigdick {
@@ -37,26 +37,16 @@
     .columnA,
     .columnB,
     .columnC {
-      
       margin: 0 auto;
-      border: 1px solid #333;
+
       width: 31%;
       padding: 15px;
       text-align: justify;
-      
-      
     }
-
 
     h2 {
       color: green;
       text-align: center;
-    }
-
-    h3 {
-      color: red;
-      text-align: center;
-      
     }
 
     /* Media query to set website layout
@@ -100,10 +90,15 @@
 
     }
 
+    .photo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     img {
       max-width: 100%;
       max-height: 100%;
-      
     }
   </style>
 </head>
@@ -115,7 +110,7 @@
   <nav id="poz" class="navbar navbar-expand-sm navbar light bg-light">
     <a href="#" class="navbar-brand mb-0 h1">
       <img class="d-inline-block align-top" src="{% static 'main/media/logo.png' %}" width="30" height="30" />
-      
+
     </a>
     <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,6 +143,7 @@
             Koszyk
           </a>
         </li>
+
         <li class="nav-item active">
           <a href="#" class="nav-link disabled">
             ProjectAI
@@ -158,7 +154,7 @@
   </nav>
   <div class="header">
     <h2 style="color:white;font-size:200%">
-      Przygotuj się na każdą porę roku!
+
     </h2>
   </div>
   <div class="bigdick">
@@ -166,145 +162,69 @@
     <div class="row">
 
       <div class="columnA">
-        <h2>HIT CENOWY!</h2>
+        <h2>Termostat</h2>
 
 
-        <img onclick="location.href='{% url 'main:produkt_po_wcisnieciu' %}'" src="{% static 'main/media/6.jpg' %}">
-        <div class="columnD">
-          <h2>Termostat</h2>
-  
-  
-  
-          <h3>tylko <br>
-            299,99 zł
-          </h3>
-  
-  
-  
-        </div>
+        <img src="{% static 'main/media/6.jpg' %}">
+
 
 
       </div>
 
       <div class="columnB">
-        <h2>NA ZIMĘ!</h2>
+        <h2>Opis</h2>
+        <h3>
+          Działa za pomocą zwykłego smartfona lub tabletu zdalnie steruj inteligentnym termostatem wifi za pomocą
+          bezpłatnej aplikacji
+          Smart Life lub TuyaSmart z dowolnego miejsca w dowolnym czasie.
+        </h3>
 
-
-
-        <img onclick="location.href='{% url 'main:produkt_po_wcisnieciu' %}'" src="{% static 'main/media/7.jpg' %}">
-        <div class="columnE">
-          <h2>Kaloryfer przenośny</h2>
-  
-  
-  
-          <h3>tylko <br>
-            125,00 zł</h3>
-  
-  
-  
-        </div>
-  
-
+        Główne funkcje:
+        Grzania - w tym trybie przekaźnik włączony jest do momentu, gdy temperatura nie wzrośnie do wartości zadanej
+        Chłodzenia - w tym trybie przekaźnik włączony jest do momentu, gdy temperatura nie spadnie do wartości zadanej
+        Kontrola temperatury poprzez ustawienie zadanej wartości i wartości histerezy.
+        Kalibracja temperatury.
+        Opóźnienie pracy sprężarki.
+        Duży i czytelny wyświetlacz LCD.
+        Schemat połączenia na obudowie.
+        Minimalistyczna i lekka konstrukcja wykonana z najwyższej klasy komponentów.
+        Szeroki zakres regulacji temperatur (-50 do 90 stopni C).
+        Automatyczny alarm przekroczenia temperatury lub gdy wystąpi błąd czujnika.
 
 
       </div>
 
       <div class="columnC">
-        <h2>NA LATO!</h2>
+        <h2>Informacje</h2>
+        <h3>Cena za egzemplarz: 299,99 zł/szt. <br>
+          Cena obowiązuje od: 29.12 - 27.02.2023 <br>
+          Cena referencyjna: <br>
+          320,51 zł</h3>
+
+        <form action="{% url 'main:cart' %}">
+
+
+          <input type="hidden" name="cmd" value="_cart">
+          <input type="hidden" name="add" value="1">
 
 
 
-        <img onclick="location.href='{% url 'main:produkt_po_wcisnieciu' %}'" src="{% static 'main/media/8.jpg' %}">
-      
-      <div class="columnF">
-        <h2>Klimatyzacja</h2>
+
+          <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif"
+            alt="Add to Cart">
+          <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+        </form>
 
 
 
-        <h3>tylko <br>
-          679,99 zł</h3>
 
 
 
       </div>
-
-
-
-      </div>
     </div>
 
-    
-<br>
-<div class="row">
-
-  <div class="columnA">
-    <h2>OKAZJA!</h2>
-
-
-    <img onclick="location.href='{% url 'main:produkt_po_wcisnieciu' %}'" src="{% static 'main/media/1.jpg' %}">
-    <div class="columnD">
-      <h2>Woda Mama i Ja</h2>
-
-
-
-      <h3>2x6 za jedyne <br>1,19 zł</h3>
-
-
-
-    </div>
-
-
   </div>
-
-  <div class="columnB">
-    <h2>DO WYCZERPANIA ZAPASÓW!</h2>
-
-
-
-    <img onclick="location.href='{% url 'main:produkt_po_wcisnieciu' %}'" src="{% static 'main/media/2.jpg' %}">
-    <div class="columnE">
-      <h2>Mandarynki</h2>
-
-
-
-      <h3>kilogram za <br>4,95 zł</h3>
-      <h2>Kup dwa zapłać mniej!</h2>
-
-
-
-      <h3>kup dwa Merci za jedyne<br>11,99 zł</h3>
-
-
-
-    </div>
-
-
-
-
   </div>
-
-  <div class="columnC">
-    <h2>NIE PRZEGAP!</h2>
-
-
-
-    <img onclick="location.href='{% url 'main:index' %}'" src="{% static 'main/media/3.jpg' %}">
-  
-  <div class="columnF">
-    <h2>Spraw swojemu dziecku prezent!</h2>
-
-
-
-    <h3>Szał promocji wciąż trwa!</h3>
-
-
-
-  </div>
-
-
-
-  </div>
-</div>
 
 
   <div id="footer">

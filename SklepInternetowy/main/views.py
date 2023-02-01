@@ -13,6 +13,9 @@ from django.shortcuts import render, redirect, reverse
 def index_view(request):
     return render(request, "main/index.html")
 
+def produkt_po_wcisnieciu_view(request):
+    return render(request, "main/produkt_po_wcisnieciu.html")
+
 
 def cart_view(request):
     return render(request, "main/cart.html")
