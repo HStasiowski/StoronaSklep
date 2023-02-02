@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static 'main/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <title>Shop</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* CSS property for header section */
+    .header {
+
+      background-color: green;
+      margin-top: 50px;
+      text-align: center;
+      border: 1px solid #333;
+
+    }
+
+    .bigdick {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* CSS property for content section */
+    .columnA,
+    .columnB,
+    .columnC {
+      margin: 0 auto;
+
+      width: 31%;
+      padding: 15px;
+      text-align: justify;
+    }
+
+    h2 {
+      color: green;
+      text-align: center;
+    }
+
+    /* Media query to set website layout
+            according to screen size */
+    @media screen and (max-width:600px) {
+
+      .columnA,
+      .columnB,
+      .columnC {
+        width: 50%;
+      }
+    }
+
+    @media screen and (max-width:400px) {
+
+      .columnA,
+      .columnB,
+      .columnC {
+        width: 100%;
+      }
+    }
+
+    #poz {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 5px;
+
+    }
+
+    #footer {
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      /* Height of the footer */
+      background: #fff;
+      text-align: center;
+
+    }
+
+    .photo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- header of website layout -->
+
+  <nav id="poz" class="navbar navbar-expand-sm navbar light bg-light">
+    <a href="#" class="navbar-brand mb-0 h1">
+      <img class="d-inline-block align-top" src="{% static 'main/media/logo.png' %}" width="30" height="30" />
+
+    </a>
+    <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a href="{% url 'main:index' %}" class="nav-link active">
+            Strona Główna
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="{% url 'main:user' %}" class="nav-link active">
+            Moje Konto
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="{% url 'main:about' %}" class="nav-link active">
+            O nas
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="{% url 'main:products' %}" class="nav-link active">
+            Produkty
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="{% url 'main:cart' %}" class="nav-link active">
+            Koszyk
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a href="#" class="nav-link disabled">
+            ProjectAI
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="header">
+    <h2 style="color:white;font-size:200%">
+
+    </h2>
+  </div>
+  <div class="bigdick">
+    <!-- Content section of website layout -->
+    <div class="row">
+
+      <div class="columnA">
+        <h2>Termostat</h2>
+
+
+        <img src="{% static 'main/media/6.jpg' %}">
+
+
+
+      </div>
+
+      <div class="columnB">
+        <h2>Opis</h2>
+        <h3>
+          Działa za pomocą zwykłego smartfona lub tabletu zdalnie steruj inteligentnym termostatem wifi za pomocą
+          bezpłatnej aplikacji
+          Smart Life lub TuyaSmart z dowolnego miejsca w dowolnym czasie.
+        </h3>
+
+        Główne funkcje:
+        Grzania - w tym trybie przekaźnik włączony jest do momentu, gdy temperatura nie wzrośnie do wartości zadanej
+        Chłodzenia - w tym trybie przekaźnik włączony jest do momentu, gdy temperatura nie spadnie do wartości zadanej
+        Kontrola temperatury poprzez ustawienie zadanej wartości i wartości histerezy.
+        Kalibracja temperatury.
+        Opóźnienie pracy sprężarki.
+        Duży i czytelny wyświetlacz LCD.
+        Schemat połączenia na obudowie.
+        Minimalistyczna i lekka konstrukcja wykonana z najwyższej klasy komponentów.
+        Szeroki zakres regulacji temperatur (-50 do 90 stopni C).
+        Automatyczny alarm przekroczenia temperatury lub gdy wystąpi błąd czujnika.
+
+
+      </div>
+
+      <div class="columnC">
+        <h2>Informacje</h2>
+        <h3>Cena za egzemplarz: 299,99 zł/szt. <br>
+          Cena obowiązuje od: 29.12 - 27.02.2023 <br>
+          Cena referencyjna: <br>
+          320,51 zł</h3>
+
+        <form action="{% url 'main:cart' %}">
+
+
+          <input type="hidden" name="cmd" value="_cart">
+          <input type="hidden" name="add" value="1">
+
+
+
+
+          <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif"
+            alt="Add to Cart">
+          <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+        </form>
+
+
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+  <div id="footer">
+    <p>Copyright 2022 <br>
+      Vitali Morskyi & Hubert Stasiowski
+    </p>
+  </div>
+
+</body>
+
+</html>
