@@ -1,5 +1,7 @@
 tutorial/*
 staticfiles/*
+sklepinternetowy/main/migrations/*
+poetry.lock
 
 # to exclude Obsidian workspace settings (including plugin and hotkey configurations)
 .obsidian/*
