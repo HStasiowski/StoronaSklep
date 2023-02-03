@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 
 
-# from django.http import HttpResponse
+from .models import Products, Cart
 
 
 def index_view(request):

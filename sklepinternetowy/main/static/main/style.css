@@ -17,9 +17,7 @@
 }
 
 /* CSS property for content section */
-.columnA,
-.columnB,
-.columnC {
+.columnA {
     margin: 0 auto;
     border: 1px solid #333;
     width: 31%;
@@ -47,17 +45,13 @@ h4 {
 /* Media query to set website layout
         according to screen size */
 @media screen and (max-width: 600px) {
-    .columnA,
-    .columnB,
-    .columnC {
+    .columnA {
         width: 50%;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .columnA,
-    .columnB,
-    .columnC {
+    .columnA {
         width: 100%;
     }
 }

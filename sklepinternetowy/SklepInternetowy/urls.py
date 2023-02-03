@@ -18,12 +18,12 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 
-
 urlpatterns = [
-                  path("main/", include("main.urls")),
-                  path("admin/", admin.site.urls),
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+    path("main/", include("main.urls")),
+    path("admin/", admin.site.urls),
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "main.views.handler400_view"
 handler500 = "main.views.handler403_view"
