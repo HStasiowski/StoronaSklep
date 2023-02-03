@@ -1,160 +1,76 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
     <title>Login Page</title>
-    <style>
-        body {
-            background-image: url("{% static 'main/media/plecy.jpg' %}");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            max-height: 100%;
-            max-width: 100%;
-
-        }
-
-        #poz {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #f8f9fa;
-            color: #fff;
-            padding: 5px;
-        }
-
-        form {
-            width: 320px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #333;
-            background-color: #f8f9fa;
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            margin-right: 20px;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 94.5%;
-            padding: 8px;
-            border: 1px solid #333;
-            margin-bottom: 10px;
-        }
-
-        input[type="submit"] {
-            padding: 8px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-
-        #footer {
-            margin-top: 33%;
-            bottom: 0;
-            width: 100%;
-            height: 50px;
-            /* Height of the footer */
-
-            text-align: center;
-
-        }
-
-        .header {
-
-            margin-top: 50px;
-            text-align: center;
-
-
-
-        }
-    </style>
 </head>
-
 <body>
-    <nav id="poz" class="navbar navbar-expand-sm navbar light bg-light">
-        <a href="#" class="navbar-brand mb-0 h1">
-            <img class="d-inline-block align-top" src="{% static 'main/media/logo.png' %}" width="30" height="30" />
-            
-        </a>
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+<nav id="poz" class="navbar navbar-expand-sm navbar light bg-light">
+    <a href="#" class="navbar-brand mb-0 h1">
+        <img class="d-inline-block align-top" src="{% static 'main/media/logo.png' %}" width="30" height="30"/>
+
+    </a>
+    <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a href="{% url 'main:index' %}" class="nav-link active">
-                        Strona Główna
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a href="{% url 'main:user' %}" class="nav-link active">
-                        Moje Konto
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a href="{% url 'main:about' %}" class="nav-link active">
-                        O Nas
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a href="{% url 'main:products' %}" class="nav-link active">
-                      Produkty
-                    </a>
-                  </li>
-                  <li class="nav-item active">
-                    <a href="{% url 'main:cart' %}" class="nav-link active">
-                      Koszyk
-                    </a>
-                  </li>
-                <li class="nav-item active">
-                    <a href="#" class="nav-link disabled">
-                        ProjectAI
-                    </a>
-                </li>
-            </ul>
-
-
-        </div>
-    </nav>
-    <div id="back">
-        <div class="header">
-            <h2 style="color:rgb(32, 30, 23);font-size:200%">
-                <!--tu ogolnie byl tekst logowanie ale trzeba jakos inaczej obnizyc-->
-            </h2>
-        </div>
-
-
-        <form action="{% url 'main:login_proceed' %}" method="post">
-            {% csrf_token %}
-            <label for="username">Pomyślnie wylogowano!</label><br>
-
-                
-            <label for="password" ><a href="{% url 'main:user' %}">Zaloguj ponownie!</a></label><br>
-
-
-
-        </form>
-
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a href="{% url 'main:index' %}" class="nav-link active">
+                    Strona Główna
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'main:user' %}" class="nav-link active">
+                    Moje Konto
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'main:about' %}" class="nav-link active">
+                    O Nas
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'main:products' %}" class="nav-link active">
+                    Produkty
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="{% url 'main:cart' %}" class="nav-link active">
+                    Koszyk
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="#" class="nav-link disabled">
+                    ProjectAI
+                </a>
+            </li>
+        </ul>
     </div>
-    <div id="footer">
-        <p>Copyright 2022 <br>
-            Vitali Morskyi & Hubert Stasiowski
-        </p>
+</nav>
+<div id="back">
+    <div class="header">
+        <h2 style="color:rgb(32, 30, 23);font-size:200%">
+            <!--tu ogolnie byl tekst logowanie ale trzeba jakos inaczej obnizyc-->
+        </h2>
     </div>
+    <form action="{% url 'main:login_proceed' %}" method="post">
+        {% csrf_token %}
+        <label for="username">Pomyślnie wylogowano!</label><br>
+        <label for="password"><a href="{% url 'main:user' %}">Zaloguj ponownie!</a></label><br>
+    </form>
+</div>
+<div id="footer">
+    <p>Copyright 2022 <br>
+        Vitali Morskyi & Hubert Stasiowski
+    </p>
+</div>
 </body>
-
 </html>

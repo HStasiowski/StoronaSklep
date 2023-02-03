@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
-    path("main/", include("main.urls")),
-    path("admin/", admin.site.urls),
-]
+                  path("main/", include("main.urls")),
+                  path("admin/", admin.site.urls),
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 handler404 = "main.views.handler400_view"
 handler500 = "main.views.handler403_view"

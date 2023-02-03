@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+/* CSS property for header section */
+.header {
+    background-color: green;
+    margin-top: 50px;
+    text-align: center;
+    border: 1px solid #333;
+    margin-bottom: 25px;
+}
+
+.bigdick {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* CSS property for content section */
+.columnA,
+.columnB,
+.columnC {
+    margin: 0 auto;
+    border: 1px solid #333;
+    width: 31%;
+    padding: 15px;
+    text-align: justify;
+}
+
+h2 {
+    color: green;
+    text-align: center;
+}
+
+h3 {
+    color: red;
+    text-align: center;
+
+}
+
+h4 {
+    color: red;
+    text-align: center;
+    border: 1px solid black;
+}
+
+/* Media query to set website layout
+        according to screen size */
+@media screen and (max-width: 600px) {
+    .columnA,
+    .columnB,
+    .columnC {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .columnA,
+    .columnB,
+    .columnC {
+        width: 100%;
+    }
+}
+
+#poz {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+}
+
+form, p {
+    width: 320px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #333;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 94.5%;
+    padding: 8px;
+    border: 1px solid #333;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    padding: 8px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#footer {
+    margin-top: 33%;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    /* Height of the footer */
+    background: #fff;
+    text-align: center;
+}
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container {
+    display: flex;
+
+}
+
+.item {
+    flex: 1;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
