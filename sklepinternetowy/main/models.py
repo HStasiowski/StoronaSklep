@@ -9,6 +9,7 @@ class Products(models.Model):
     stock = models.IntegerField(default=0)
     last_updated = models.DateTimeField(default=timezone.now)
     product_img = models.ImageField(upload_to='images/', null=True)
+    product_promo = models.CharField(max_length=30, null=True)
 
     def __str__(self):
         return self.product_name

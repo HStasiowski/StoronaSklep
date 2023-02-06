@@ -22,7 +22,19 @@ def cart_view(request):
 
 
 def products_view(request):
-    return render(request, "main/products.html")
+    all_products = Products.objects.all()
+    n_products = len(all_products)
+    n_rows = n_products // 3 if n_products % 3 == 0 else n_products // 3 + 1
+    rows = [all_products[(row_id * 3):((row_id + 1) * 3)] for row_id in range(n_rows)]
+    return render(
+        request, "main/products.html",
+        {
+            "all_products": all_products,
+            "n_products": n_products,
+            "n_rows": n_rows,
+            "rows": rows
+        }
+    )
 
 
 def for_testing_view(request):
