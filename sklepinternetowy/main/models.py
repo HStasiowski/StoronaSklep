@@ -4,12 +4,13 @@ from django.contrib.auth.models import User
 
 
 class Products(models.Model):
-    product_name = models.TextField()
+    product_name = models.TextField(max_length=50)
     price = models.FloatField(default=0.0)
     stock = models.IntegerField(default=0)
     last_updated = models.DateTimeField(default=timezone.now)
-    product_img = models.ImageField(upload_to='images/', null=True)
-    product_promo = models.CharField(max_length=30, null=True)
+    img = models.ImageField(upload_to='images/', null=True)
+    promo = models.TextField(max_length=30, null=True)
+    description = models.TextField(max_length=1000, default="Brak opisu")
 
     def __str__(self):
         return self.product_name

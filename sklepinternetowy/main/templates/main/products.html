@@ -67,15 +67,15 @@
         Przygotuj się na każdą porę roku!
     </h2>
 </div>
-<div class="bigdick">
+<div class="main_box">
     <!-- Content section of website layout -->
     {% for row in rows %}
         <div class="row">
             {% for product in row %}
                 <div class="columnA">
-                    <h2>{{ product.product_promo }}</h2>
-                    <img onclick="location.href='{% url 'main:produkt_po_wcisnieciu' %}'"
-                         src="{{ product.product_img.url }}">
+                    <h2>{{ product.promo }}</h2>
+                    <img onclick="location.href='{% url 'main:produkt_po_wcisnieciu'%}?product_id={{ product.id }}'"
+                         src="{{ product.img.url }}">
                     <div class="columnB">
                         <h2>{{ product.product_name }}</h2>
                         <h3>tylko <br>

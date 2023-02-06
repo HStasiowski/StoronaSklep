@@ -6,15 +6,27 @@ from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 
-
 from .models import Products, Cart
 
 
 def index_view(request):
     return render(request, "main/index.html")
 
+
 def produkt_po_wcisnieciu_view(request):
-    return render(request, "main/produkt_po_wcisnieciu.html")
+    product_id = int(request.GET.get("product_id", default="-1"))
+    if product_id == -1:
+        return products_view(request)
+    else:
+        product = Products.objects.get(pk=product_id)
+        return render(
+            request,
+            "main/produkt_po_wcisnieciu.html",
+            {
+                "product": product,
+                "price": f"{product.price:.2f}"
+            }
+        )
 
 
 def cart_view(request):

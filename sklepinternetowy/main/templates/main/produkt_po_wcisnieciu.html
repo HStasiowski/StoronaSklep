@@ -69,76 +69,40 @@
 
     </h2>
 </div>
-<div class="bigdick">
+<div class="main_box">
     <!-- Content section of website layout -->
     <div class="row">
-
         <div class="columnA">
-            <h2>Termostat</h2>
-
-
-            <img src="{% static 'main/media/6.jpg' %}">
-
-
+            <h2>{{ product.product_name }}</h2>
+            <img src="{{ product.img.url }}">
         </div>
-
         <div class="columnA">
             <h2>Opis</h2>
             <h3>
-                Działa za pomocą zwykłego smartfona lub tabletu zdalnie steruj inteligentnym termostatem wifi za pomocą
-                bezpłatnej aplikacji
-                Smart Life lub TuyaSmart z dowolnego miejsca w dowolnym czasie.
+                Można zmienić to
             </h3>
-
-            Główne funkcje:
-            Grzania - w tym trybie przekaźnik włączony jest do momentu, gdy temperatura nie wzrośnie do wartości zadanej
-            Chłodzenia - w tym trybie przekaźnik włączony jest do momentu, gdy temperatura nie spadnie do wartości
-            zadanej
-            Kontrola temperatury poprzez ustawienie zadanej wartości i wartości histerezy.
-            Kalibracja temperatury.
-            Opóźnienie pracy sprężarki.
-            Duży i czytelny wyświetlacz LCD.
-            Schemat połączenia na obudowie.
-            Minimalistyczna i lekka konstrukcja wykonana z najwyższej klasy komponentów.
-            Szeroki zakres regulacji temperatur (-50 do 90 stopni C).
-            Automatyczny alarm przekroczenia temperatury lub gdy wystąpi błąd czujnika.
-
-
+            {{ product.description }}
         </div>
-
         <div class="columnA">
             <h2>Informacje</h2>
-            <h3>Cena za egzemplarz: 299,99 zł/szt. <br>
+            <h3>Cena za egzemplarz: {{ price }} zł/szt. <br>
                 Cena obowiązuje od: 29.12 - 27.02.2023 <br>
                 Cena referencyjna: <br>
                 320,51 zł</h3>
-
             <form action="{% url 'main:cart' %}">
-
-
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="add" value="1">
-
-
                 <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif"
                        alt="Add to Cart">
                 <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
             </form>
-
-
         </div>
     </div>
-
 </div>
-</div>
-
-
 <div id="footer">
     <p>Copyright 2022 <br>
         Vitali Morskyi & Hubert Stasiowski
     </p>
 </div>
-
 </body>
-
 </html>
