@@ -2,6 +2,7 @@ tutorial/*
 staticfiles/*
 poetry.lock
 sklepinternetowy/media/images/
+sklepinternetowy/SklepInternetowy/settings.py
 
 # to exclude Obsidian workspace settings (including plugin and hotkey configurations)
 .obsidian/*
