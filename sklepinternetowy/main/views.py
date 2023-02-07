@@ -1,12 +1,15 @@
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib.auth.password_validation import validate_password, ValidationError
-from django.core.validators import validate_email, validate_unicode_slug
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 
-from .models import Products, Cart
+from .forms import RegisterForm
+from .models import Products
 
 
 def index_view(request):
@@ -70,6 +73,7 @@ def render_register_view(request,
         "predefined_password": password,
         "predefined_confirm_password": confirm_password,
         "unsuccessful_description": unsuccessful_description,
+        "captcha": ReCaptchaField(widget=ReCaptchaV2Checkbox, api_params={'hl': 'pl'})
     })
 
 
@@ -77,79 +81,39 @@ def register_view(request):
     if request.user.is_authenticated:
         return redirect(reverse("main:user"))
     else:
-        return render(request, "main/user_register.html")
-
-
-def register_success_view(request):
-    if request.user.is_authenticated:
-        return redirect(reverse("main:user"))
-    else:
-        try:
-            first_name = request.POST["first-name"]
-            last_name = request.POST["last-name"]
-            user_email = request.POST["email"]
-            username = request.POST["username"]
-            password = request.POST["password"]
-            confirm_password = request.POST["confirm-password"]
-        except KeyError:
-            return HttpResponse(status=500)
-        else:
-            problems = []
-            try:
-                validate_password(password=password, user=username)
-            except ValidationError as validation_error:
-                problems.extend([error.messages[0] for error in validation_error.error_list])
-            try:
-                validate_email(user_email)
-            except ValidationError as validation_error:
-                problems.extend([error.messages[0] for error in validation_error.error_list])
-            for item, desc in zip([first_name, last_name, username], ["First name", "Last name", "Username"]):
+        if request.method == "POST":
+            # User has submitted his form
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                first_name = form.cleaned_data["first_name"]
+                last_name = form.cleaned_data["last_name"]
+                user_email = form.cleaned_data["user_email"]
+                username = form.cleaned_data["username"]
+                password = form.cleaned_data["password"]
                 try:
-                    validate_unicode_slug(item)
-                except ValidationError:
-                    problems.append(
-                        f"{desc} should be a valid “slug” consisting of Unicode letters, "
-                        f"numbers, underscores, or hyphens.")
-            if first_name == "" or last_name == "" or user_email == "" or username == "" or password == "":
-                problems.append("All fields must be filled.")
-            if password != confirm_password:
-                problems.append("Your passwords doesn't match.")
+                    user_object = User.objects.create_user(
+                        first_name=first_name,
+                        last_name=last_name,
+                        email=user_email,
+                        username=username,
+                        password=password,
+                    )
+                except IntegrityError:
+                    form.add_error(
+                        "username",
+                        ValidationError(
+                            "Username %(username)s is already taken.",
+                            params={"username": username}
+                        ))
+                else:
+                    user_object.save()
+                    return render(request, "main/user_register_success.html")
+        else:
+            # User has opened registration page
+            form = RegisterForm()
 
-            if problems:
-                return render_register_view(
-                    request,
-                    first_name=first_name,
-                    last_name=last_name,
-                    user_email=user_email,
-                    username=username,
-                    password=password,
-                    confirm_password=confirm_password,
-                    unsuccessful_description=problems,
-                )
-
-            try:
-                user_object = User.objects.create_user(
-                    first_name=first_name,
-                    last_name=last_name,
-                    email=user_email,
-                    username=username,
-                    password=password,
-                )
-            except IntegrityError:
-                return render_register_view(
-                    request,
-                    first_name=first_name,
-                    last_name=last_name,
-                    user_email=user_email,
-                    username=username,
-                    password=password,
-                    confirm_password=confirm_password,
-                    unsuccessful_description=[f"Username {username} is already taken."],
-                )
-            else:
-                user_object.save()
-
-            return render(request, "main/user_register_success.html")
+        # Render a new registration page or fulfill old data with errors
+        return render(request, "main/user_register.html", {"form": form})
 
 
 def render_user_view(request,

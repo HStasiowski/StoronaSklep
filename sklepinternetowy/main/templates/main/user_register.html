@@ -48,7 +48,6 @@
                     Koszyk
                 </a>
             </li>
-            </li>
             <li class="nav-item active">
                 <a href="#" class="nav-link disabled">
                     ProjectAI
@@ -67,36 +66,12 @@
     </div>
 
 
-    <form action="{% url 'main:register_success' %}" method="post">
+    <form action="{% url 'main:register' %}" method="post">
         {% csrf_token %}
+        {{ form }}
 
-        <label for="first-name">Imie:</label>
-        <input type="text" id="first-name" name="first-name"
-               value="{% if predefined_first_name %}{{ predefined_first_name }}{% endif %}">
-        <label for="last-name">Nazwisko:</label>
-        <input type="text" id="last-name" name="last-name"
-               value="{% if predefined_last_name %}{{ predefined_last_name }}{% endif %}">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email"
-               value="{% if predefined_user_email %}{{ predefined_user_email }}{% endif %}">
-
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"
-               value="{% if predefined_username %}{{ predefined_username }}{% endif %}">
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"
-               value="{% if predefined_password %}{{ predefined_password }}{% endif %}">
-        <label for="confirm-password">Confirm Password:</label><br>
-        <input type="password" id="confirm-password" name="confirm-password"
-               value="{% if predefined_confirm_password %}{{ predefined_confirm_password }}{% endif %}"><br><br>
-
-        {% if unsuccessful_description %}
-            {% for description in unsuccessful_description %}
-                <p style="color: red"><strong>{{ description }}</strong></p>
-            {% endfor %}
-        {% endif %}
         <input type="submit" value="Submit"><br><br>
-        <p>Masz już konto? <a href="{% url 'main:login' %}">Zaloguj się!</a></p>
+        Masz już konto? <a href="{% url 'main:login' %}">Zaloguj się!</a>
     </form>
 
 </div>
