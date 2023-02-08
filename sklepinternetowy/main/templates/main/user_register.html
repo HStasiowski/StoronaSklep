@@ -61,7 +61,7 @@
 </nav>
 <div id="back">
     <div class="header">
-        <h2 style="color:rgb(32, 30, 23);font-size:200%">
+        <h2 style="color:white;font-size:200%">
             Tworzenia konta!
         </h2>
     </div>
@@ -92,11 +92,11 @@
 
         {% if unsuccessful_description %}
             {% for description in unsuccessful_description %}
-                <p style="color: red"><strong>{{ description }}</strong></p>
+                <p style="color: red"> <strong>{{ description }}</strong> </p>
             {% endfor %}
         {% endif %}
         <input type="submit" value="Submit"><br><br>
-        <p>Masz już konto? <a href="{% url 'main:login' %}">Zaloguj się!</a></p>
+        Masz już konto? <a href="{% url 'main:login' %}">Zaloguj się!</a>
     </form>
 
 </div>

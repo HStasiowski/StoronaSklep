@@ -66,13 +66,19 @@ h4 {
     padding: 5px;
 }
 
-form, p {
+form {
     width: 320px;
     margin: auto;
     padding: 20px;
     border: 1px solid #333;
     background-color: #f8f9fa;
     text-align: center;
+}
+p {
+    width: 320px;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
 }
 
 label {

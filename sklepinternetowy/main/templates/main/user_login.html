@@ -10,16 +10,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
     <title>Login Page</title>
-    <style>
-        body {
-            background-image: url("{% static 'main/media/plecy.jpg' %}");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            max-height: 100%;
-            max-width: 100%;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -70,10 +61,10 @@
 
     </div>
 </nav>
-<div id="back">
+
     <div class="header">
-        <h2 style="color:rgb(32, 30, 23);font-size:200%">
-            Logowanie
+        <h2 style="color:white;font-size:200%">
+            Login
         </h2>
     </div>
 
@@ -87,10 +78,10 @@
         <input type="password" id="password" name="password"><br><br>
         {% if unsuccessful_login %}<p style="color: red"><strong>{{ unsuccessful_login }}</strong></p>{% endif %}
         <input type="submit" value="Submit"><br><br>
-        <p>Nie masz konta? <a href="{% url 'main:register' %}">Załóż!</a></p>
+        Nie masz konta? <a href="{% url 'main:register' %}">Załóż!</a>
     </form>
 
-</div>
+
 <div id="footer">
     <p>Copyright 2022 <br>
         Vitali Morskyi & Hubert Stasiowski
