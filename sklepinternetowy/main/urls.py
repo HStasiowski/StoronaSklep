@@ -13,7 +13,7 @@ urlpatterns = [
     path('user/change_password/', views.change_password, name='change_password'),
     path('user/cart/', views.cart_view, name='cart'),
     path('logout/', views.logout_proceed, name='logout'),
-    path('for_testing/', views.for_testing_view, name='for_testing'),
+    path('test/', views.test_view, name='test'),
     path('products/', views.products_view, name='products'),
-    path('products/produkt_po_wcisnieciu/', views.produkt_po_wcisnieciu_view, name='produkt_po_wcisnieciu'),
+    path('products/<int:product_id>/', views.product_by_id_view, name='product_by_id'),
 ]

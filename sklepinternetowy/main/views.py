@@ -16,15 +16,15 @@ def index_view(request):
     return render(request, "main/index.html")
 
 
-def produkt_po_wcisnieciu_view(request):
-    product_id = int(request.GET.get("product_id", default="-1"))
-    if product_id == -1:
-        return products_view(request)
-    else:
+def product_by_id_view(request, product_id: int):
+    try:
         product = Products.objects.get(pk=product_id)
+    except Products.DoesNotExist:
+        return HttpResponse(content="Produkt nie znaleziono...", status=404)
+    else:
         return render(
             request,
-            "main/produkt_po_wcisnieciu.html",
+            "main/product_by_id.html",
             {
                 "product": product,
                 "price": f"{product.price:.2f}"
@@ -52,29 +52,12 @@ def products_view(request):
     )
 
 
-def for_testing_view(request):
-    return render(request, "main/for_testing.html")
+def test_view(request):
+    return render(request, "main/index.html")
 
 
 def about_view(request):
     return render(request, "main/about.html")
-
-
-def render_register_view(request,
-                         first_name=None, last_name=None,
-                         username=None, user_email=None,
-                         password=None, confirm_password=None,
-                         unsuccessful_description=None):
-    return render(request, "main/user_register.html", {
-        "predefined_first_name": first_name,
-        "predefined_last_name": last_name,
-        "predefined_user_email": user_email,
-        "predefined_username": username,
-        "predefined_password": password,
-        "predefined_confirm_password": confirm_password,
-        "unsuccessful_description": unsuccessful_description,
-        "captcha": ReCaptchaField(widget=ReCaptchaV2Checkbox, api_params={'hl': 'pl'})
-    })
 
 
 def register_view(request):
@@ -120,9 +103,7 @@ def render_user_view(request,
                      current_password=None, new_password=None,
                      confirm_new_password=None, unsuccessful_description=None):
     return render(request, "main/user_profile.html", {
-        "first_name": request.user.first_name,
-        "last_name": request.user.last_name,
-        "user_email": request.user.email,
+        "user": request.user,
         "predefined_current_password": current_password,
         "predefined_new_password": new_password,
         "predefined_confirm_new_password": confirm_new_password,
