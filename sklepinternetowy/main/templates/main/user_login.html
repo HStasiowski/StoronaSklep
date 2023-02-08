@@ -12,10 +12,10 @@
 {% block body %}
     <form action="{% url 'main:login_proceed' %}" method="post">
         {% csrf_token %}
-        <label for="username">Username:</label><br>
+        <label for="username">Nazwa użytkownika:</label><br>
         <input type="text" id="username" name="username"
                value="{% if predefined_username %}{{ predefined_username }}{% endif %}"><br><br>
-        <label for="password">Password:</label><br>
+        <label for="password">Hasło:</label><br>
         <input type="password" id="password" name="password"><br><br>
         {% if unsuccessful_login %}<p style="color: red"><strong>{{ unsuccessful_login }}</strong></p>{% endif %}
         <input type="submit" value="Submit"><br><br>

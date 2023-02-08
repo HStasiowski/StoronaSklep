@@ -10,24 +10,24 @@
 {% block header %}Cześć, {{ user.first_name }}!{% endblock %}
 
 {% block body %}
-    <h2>Personal Information</h2>
+    <h2>Informacja o użytkowniku</h2>
     <p>
-        First Name: <span id="first-name">{% if user.first_name %}{{ user.first_name }}{% endif %}</span><br>
-        Last Name: <span id="last-name">{% if user.last_name %}{{ user.last_name }}{% endif %}</span><br>
+        Imię: <span id="first-name">{% if user.first_name %}{{ user.first_name }}{% endif %}</span><br>
+        Nazwisko: <span id="last-name">{% if user.last_name %}{{ user.last_name }}{% endif %}</span><br>
         Email: <span id="email">{% if user.email %}{{ user.email }}{% endif %}</span>
     </p>
 
-    <h2>Change Password</h2>
+    <h2>Zmień hasło</h2>
 
     <form action="{% url 'main:change_password' %}" method="post">
         {% csrf_token %}
-        <label for="current-password">Current Password:</label><br>
+        <label for="current-password">Obecne hasło:</label><br>
         <input type="password" id="current-password" name="current-password"
                value="{% if predefined_current_password %}{{ predefined_current_password }}{% endif %}"><br>
-        <label for="new-password">New Password:</label><br>
+        <label for="new-password">Nowe hasło:</label><br>
         <input type="password" id="new-password" name="new-password"
                value="{% if predefined_new_password %}{{ predefined_new_password }}{% endif %}"><br>
-        <label for="confirm-new-password">Confirm New Password:</label><br>
+        <label for="confirm-new-password">Potwierdzenie nowego hasła:</label><br>
         <input type="password" id="confirm-new-password" name="confirm-new-password"
                value="{% if predefined_confirm_new_password %}{{ predefined_confirm_new_password }}{% endif %}"><br><br>
 
@@ -36,7 +36,7 @@
                 <lablel style="color: red"><strong>{{ description }}</strong></lablel><br><br>
             {% endfor %}
         {% endif %}
-        <input type="submit" value="Submit">
+        <input type="submit" value="Zatwierdź">
     </form>
-    <form action="{% url 'main:logout' %}"><input type="submit" value="Logout"></form>
+    <form action="{% url 'main:logout' %}"><input type="submit" value="Wyloguj się"></form>
 {% endblock %}
