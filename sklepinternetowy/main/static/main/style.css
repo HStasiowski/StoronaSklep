@@ -25,6 +25,11 @@
     text-align: justify;
 }
 
+.columnC {
+    margin: 0 auto;
+    width: 320px;
+}
+
 h2 {
     color: green;
     text-align: center;
@@ -67,7 +72,7 @@ h4 {
 }
 
 form {
-    width: 320px;
+    width: 100%;
     margin: auto;
     padding: 20px;
     border: 1px solid #333;
@@ -75,7 +80,7 @@ form {
     text-align: center;
 }
 p {
-    width: 320px;
+    width: 100%;
     margin: auto;
     padding: 20px;
     text-align: left;
@@ -122,6 +127,9 @@ input[type="submit"] {
 }
 
 img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 100%;
     max-height: 100%;
 }
