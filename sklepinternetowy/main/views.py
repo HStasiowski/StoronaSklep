@@ -1,5 +1,3 @@
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Checkbox
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
@@ -9,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 
 from .forms import RegisterForm
-from .models import Products
+from .models import Products, Cart
 
 
 def index_view(request):
@@ -33,7 +31,27 @@ def product_by_id_view(request, product_id: int):
 
 
 def cart_view(request):
-    return render(request, "main/cart.html")
+    if request.method == "GET":
+        return render(request, "main/cart.html")
+    elif request.method == "POST":
+        try:
+            product_id = int(request.POST.get("product_id"))
+        except (KeyError, ValueError):
+            return HttpResponse(status=500)
+        else:
+            try:
+                cart_entry = Cart.objects.get(user_id=request.user.id, product_id=product_id)
+            except Cart.DoesNotExist:
+                cart_entry = Cart.objects.create(
+                    user_id=request.user,
+                    product_id_id=product_id,
+                    count_items=1
+                )
+                cart_entry.save()
+            else:
+                cart_entry.count_items += 1
+                cart_entry.save()
+            return render(request, "main/cart.html")
 
 
 def products_view(request):

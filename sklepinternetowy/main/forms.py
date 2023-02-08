@@ -12,7 +12,7 @@ class RegisterForm(forms.Form):
     user_email = forms.EmailField(label="Email", max_length=75, validators=[validate_email])
     username = forms.CharField(label="Nazwa użytkownika", max_length=30, validators=[validate_unicode_slug])
     password = forms.CharField(label="Hasło", widget=forms.PasswordInput(), validators=[validate_password])
-    confirm_password = forms.CharField(label="Powtórne hasło", widget=forms.PasswordInput(), )
+    confirm_password = forms.CharField(label="Potwierdzenie hasła", widget=forms.PasswordInput(), )
     captcha = ReCaptchaField(label="Captcha", widget=ReCaptchaV2Checkbox)
 
     def clean(self):

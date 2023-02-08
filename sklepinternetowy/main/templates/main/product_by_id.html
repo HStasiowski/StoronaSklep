@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block title %}VH - Produkty - {{ product.product_name }}{% endblock %}
+{% block title %}Produkty - {{ product.product_name }}{% endblock %}
 
 {% block nav-products-1 %}active{% endblock %}
 {% block nav-products-2 %}aria-current="page"{% endblock %}
@@ -16,25 +16,24 @@
             <img src="{{ product.img.url }}">
         </div>
         <div class="columnA">
-            <h2>Opis</h2>
-            <h3>
-                Można zmienić to
-            </h3>
+            <h2>{{ product.promo }}</h2>
             {{ product.description }}
         </div>
         <div class="columnA">
             <h2>Informacje</h2>
-            <h3>Cena za egzemplarz: {{ price }} zł/szt. <br>
-                Cena obowiązuje od: 29.12 - 27.02.2023 <br>
-                Cena referencyjna: <br>
-                320,51 zł</h3>
-            <form style="border: none; background-color: transparent;" action="{% url 'main:cart' %}">
-                <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="add" value="1">
-                <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif"
-                       alt="Add to Cart">
-                <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+            <p style="font-size: larger; text-align: center">
+                Cena: <b>{{ price }} zł/szt.</b>
+            </p>
+            <p>
+                Ilość towarów w magazynie: {{ product.stock }} <br>
+                Ostatnia aktualizacja: <br> {{ product.last_updated }} <br>
+            </p>
+            <form style="border: none; background-color: transparent;" action="{% url 'main:cart' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" id="product_id" name="product_id" value="{{ product.id }}">
+                <input type="submit" class="btn" value="Dodaj do koszyka">
             </form>
+            <br><br>
         </div>
     </div>
 {% endblock %}
