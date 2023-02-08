@@ -1,5 +1,4 @@
-tutorial/*
-staticfiles/*
+data/
 poetry.lock
 sklepinternetowy/media/images/
 sklepinternetowy/SklepInternetowy/settings.py
